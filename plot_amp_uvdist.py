@@ -97,7 +97,8 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         foo['snrdb']=foo['snr']
 
     plt.figure(figsize=figsize)
-    
+    plt.rcParams["font.weight"] = "normal"
+    plt.rcParams["axes.labelweight"] = "normal"
     #primary baselines
     for base in sorted(list(foo.baseline.unique())):      
         basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
