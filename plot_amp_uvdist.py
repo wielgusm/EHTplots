@@ -120,7 +120,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     plt.ylabel('Correlated Flux Density (Jy)',fontsize=fontsize,fontname=fontname)
     plt.xlim(xlim)
     plt.ylim(ylim)
-    plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True,fontweight=fontweight)
+    plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True)
     #plt.tick_params(axis="y",direction="in")
     #plt.tick_params(axis="x",direction="in")
     plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
