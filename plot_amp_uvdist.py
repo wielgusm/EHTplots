@@ -116,8 +116,8 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
                          color=current_palette[basefull],label=basefull,elinewidth=line_width,
                         capsize=capsize,mec=mark_edge_color,ecolor=line_color,mew=mark_edge_width)   
     plt.yscale(yscale)
-    plt.xlabel('uv distance (G$\lambda$)',fontsize=fontsize,fontname=fontname)
-    plt.ylabel('Correlated Flux Density (Jy)',fontsize=fontsize,fontname=fontname)
+    plt.xlabel('uv distance (G$\lambda$)',fontsize=fontsize,fontname=fontname,fontweight=fontweight)
+    plt.ylabel('Correlated Flux Density (Jy)',fontsize=fontsize,fontname=fontname,fontweight=fontweight)
     plt.xlim(xlim)
     plt.ylim(ylim)
     plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True)
