@@ -74,15 +74,18 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     #sns.set_style('ticks')
     #sns.set_style({"xtick.direction": "in","ytick.direction": "in"})
     
-    ###################################
-    #LOAD DATA AND MAKE A DATAFRAME
-    ###################################
-    obs = eh.obsdata.load_uvfits(pathf)
-    obs.add_scans()
-    obs = obs.avg_coherent(inttime=0.,scan_avg=True)
-    df = eh.statistics.dataframes.make_df(obs)
-    df['uvdist']=np.sqrt(df.u**2 + df.v**2)/1e6
+    if type(pathf)==str:
+        ###################################
+        #LOAD DATA AND MAKE A DATAFRAME
+        ###################################
+        obs = eh.obsdata.load_uvfits(pathf)
+        obs.add_scans()
+        obs = obs.avg_coherent(inttime=0.,scan_avg=True)
+        df = eh.statistics.dataframes.make_df(obs)
+    else:
+        df=pathf
 
+    df['uvdist']=np.sqrt(df.u**2 + df.v**2)/1e6
     foo=df
     foo=foo[foo.snr>snr_cut]
     if debias:
@@ -94,22 +97,23 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         foo['snrdb']=foo['snr']
 
     plt.figure(figsize=figsize)
+    
+    #primary baselines
     for base in sorted(list(foo.baseline.unique())):      
         basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
-
-        #redundant baselines
-        if ('JCMT' in basefull) or (('APEX' in basefull) and ('ALMA' not in basefull)) :
-            plt.errorbar(foo[foo.baseline==base].uvdist/1e3,foo[foo.baseline==base].ampdb,
-                         bars_on*foo[foo.baseline==base].sigma,fmt='d',ms=size_dots_redundant,
-                         color=current_palette[basefull],label=basefull,elinewidth=line_width,
-                        capsize=capsize,mec=mark_edge_color,ecolor=line_color,mew=mark_edge_width)
-        else:
-            #primary baselines
+        if ('JCMT' not in basefull) and (('APEX' not in basefull) or ('ALMA' in basefull)):
             plt.errorbar(foo[foo.baseline==base].uvdist/1e3,foo[foo.baseline==base].ampdb,
                          bars_on*foo[foo.baseline==base].sigma,fmt='o',ms=size_dots_primary,
                          color=current_palette[basefull],label=basefull,elinewidth=line_width,
                         capsize=capsize,mec=mark_edge_color,ecolor=line_color,mew=mark_edge_width)
-
+    #redundant baselines       
+    for base in sorted(list(foo.baseline.unique())):      
+        basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
+        if ('JCMT' in basefull) or (('APEX' in basefull) and ('ALMA' not in basefull)) :
+            plt.errorbar(foo[foo.baseline==base].uvdist/1e3,foo[foo.baseline==base].ampdb,
+                         bars_on*foo[foo.baseline==base].sigma,fmt='d',ms=size_dots_redundant,
+                         color=current_palette[basefull],label=basefull,elinewidth=line_width,
+                        capsize=capsize,mec=mark_edge_color,ecolor=line_color,mew=mark_edge_width)   
     plt.yscale(yscale)
     plt.xlabel('uv distance (G$\lambda$)',fontsize=fontsize,fontname=fontname)
     plt.ylabel('Correlated Flux Density (Jy)',fontsize=fontsize,fontname=fontname)
