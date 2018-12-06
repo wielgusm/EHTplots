@@ -2,7 +2,6 @@ import ehtim as eh
 import numpy as np
 import pandas as pd
 #import seaborn as sns
-import matplotlib
 import matplotlib.pyplot as plt
 
 ###################################
@@ -74,8 +73,6 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     #sns.set_style('white')
     #sns.set_style('ticks')
     #sns.set_style({"xtick.direction": "in","ytick.direction": "in"})
-    del matplotlib.font_manager.weight_dict['roman']
-    matplotlib.font_manager._rebuild()
     if type(pathf)==str:
         ###################################
         #LOAD DATA AND MAKE A DATAFRAME
