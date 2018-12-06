@@ -1,7 +1,7 @@
 import ehtim as eh
 import numpy as np
 import pandas as pd
-import seaborn as sns
+#import seaborn as sns
 import matplotlib.pyplot as plt
 
 ###################################
@@ -70,9 +70,9 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     palette_dict_inv = {k.split('-')[1]+'-'+k.split('-')[0] : v for k, v in palette_dict.items()}
     #current_palette={**palette_dict, **palette_dict_inv}
     current_palette = merge_two_dicts(palette_dict, palette_dict_inv)
-    sns.set_style('white')
-    sns.set_style('ticks')
-    sns.set_style({"xtick.direction": "in","ytick.direction": "in"})
+    #sns.set_style('white')
+    #sns.set_style('ticks')
+    #sns.set_style({"xtick.direction": "in","ytick.direction": "in"})
     
     ###################################
     #LOAD DATA AND MAKE A DATAFRAME
@@ -94,6 +94,8 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         foo['snrdb']=foo['snr']
 
     plt.figure(figsize=figsize)
+    plt.tick_params(axis="y",direction="in")
+    plt.tick_params(axis="x",direction="in")
     for base in sorted(list(foo.baseline.unique())):      
         basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
 
