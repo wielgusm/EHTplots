@@ -1,7 +1,12 @@
 #PLOTTING AMP vs UVDIST FROM UVFITS IN EHT STYLE
 #Maciek Wielgus 2018/12/05
 
+#import sys
+#sys.path.insert(0,'/home/maciek/EHTplots/EHTplots/')
 from plot_amp_uvdist import *
+import matplotlib
+del matplotlib.font_manager.weight_dict['roman']
+matplotlib.font_manager._rebuild()
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -11,12 +16,12 @@ pathf = '/data/2017-april/ce/er5/postproc-hops-lo/3.+netcal/3601/hops_3601_M87+n
 ###################################
 #SOME USEFULL FIGURE SETTINGS
 ###################################
-figsize=(6,4)#size of the figure
-fontsize=20 
-ticks_fontsize=20
+figsize=(6,4) #size of the figure
+fontsize=15
+ticks_fontsize=14
 line_width=0.5 #errorbar line thickness
 capsize=2 #errorbar cap size
-#legend=True
+legend=False
 label=True
 fontname='Latin Modern Roman'
 fontname2='Helvetica'
@@ -39,4 +44,4 @@ plot_amp_uvdist(pathf,savefig='',fontsize=fontsize,ticks_fontsize=ticks_fontsize
                line_color=line_color, size_dots_primary=size_dots_primary,
                size_dots_redundant=size_dots_redundant,mark_edge_width=mark_edge_width,
                xlim=xlim,ylim=ylim,yscale=yscale,debias=debias,snr_cut=snr_cut,bars_on=bars_on,
-               ticks_in_style=ticks_in_style,figsize=figsize)
+               ticks_in_style=ticks_in_style, figsize=figsize)
