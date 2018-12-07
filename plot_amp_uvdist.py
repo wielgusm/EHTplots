@@ -1,3 +1,6 @@
+#PLOTTING AMP vs UVDIST FROM UVFITS IN EHT STYLE
+#Maciek Wielgus 2018/12/06
+
 import ehtim as eh
 import numpy as np
 import pandas as pd
