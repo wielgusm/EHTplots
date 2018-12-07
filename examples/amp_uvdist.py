@@ -4,6 +4,7 @@
 #import sys
 #sys.path.insert(0,'/home/maciek/EHTplots/EHTplots/')
 from plot_amp_uvdist import *
+#trick to prevent weird bold roman fonts in python 3
 import matplotlib
 del matplotlib.font_manager.weight_dict['roman']
 matplotlib.font_manager._rebuild()
