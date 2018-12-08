@@ -28,11 +28,11 @@ ylim=[-10,10]#y axis range
 snr_cut=0. #make an snr threshold
 #savefig='my_pretty_plot.pdf' #path / name to save the plot
 
-def plot_coverage_uv(pathf,fontsize=14,ticks_fontsize=10, line_width=0.5,
+def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
             legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
-line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
+line_color=[0,0,0,1], size_dots_primary=30, size_dots_redundant=30,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
-            yscale='log',ticks_in_style=False,figsize=(10.5,7.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True):
+            yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True):
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
     def merge_two_dicts(x, y):
         z = x.copy()   # start with x's keys and values
@@ -108,8 +108,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         if ('JCMT' in basefull) or (('APEX' in basefull) and ('ALMA' not in basefull)) :
             colorLoc=np.asarray([current_palette[basefull]])
             plt.scatter(foo[foo.baseline==base].u,foo[foo.baseline==base].v,
-                        s=size_dots_redundant,
-                        c=colorLoc,label=basefull)
+            s=size_dots_redundant,linewidths=line_width, edgecolors=mark_edge_color,c=colorLoc,label=basefull)
     
     #primary baselines
     for base in sorted(list(foo.baseline.unique())):
@@ -120,8 +119,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         if ('JCMT' not in basefull) and (('APEX' not in basefull) or ('ALMA' in basefull)) :
             colorLoc=np.asarray([current_palette[basefull]])
             plt.scatter(foo[foo.baseline==base].u,foo[foo.baseline==base].v,
-                        s=size_dots_primary,
-                        c=colorLoc,label=basefull)
+            s=size_dots_primary,c=colorLoc,linewidths=line_width, edgecolors=mark_edge_color,label=basefull)
 
     
     t= np.linspace(0,2*np.pi,256)
