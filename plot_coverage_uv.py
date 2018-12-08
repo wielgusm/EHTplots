@@ -118,7 +118,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         else:    
             basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
         if ('JCMT' not in basefull) and (('APEX' not in basefull) or ('ALMA' in basefull)) :
-            colorLoc=np.asarray([current_palette[basefull])
+            colorLoc=np.asarray([current_palette[basefull]])
             plt.scatter(foo[foo.baseline==base].u,foo[foo.baseline==base].v,
                         s=size_dots_primary,
                         c=colorLoc,label=basefull)
