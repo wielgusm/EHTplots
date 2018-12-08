@@ -11,26 +11,29 @@ import matplotlib.transforms as mt
 ###################################
 #SOME ASSUMPTIONS
 ###################################
-fontsize=14 
-ticks_fontsize=10
-line_width=0.5 #errorbar line thickness
+figsize=(8,5.5) #size of the figure
+fontsize=15
+ticks_fontsize=14
 legend=False
-label=True
 fontname='Latin Modern Roman'
 fontname2='Helvetica'
+line_width=line_width
 mark_edge_color=[0,0,0,0.5] #color of the marker edge, last digit is transparency alpha
-line_color=[0,0,0,1] #color of error bar, last digit is transparency alpha
-size_dots_primary=60 #size of markers for primary baselines  
-size_dots_redundant=60 #size of markers for redundant baselines
+size_dots_primary=50 #size of markers for primary baselines  
+size_dots_redundant=50#size of markers for redundant baselines
 mark_edge_width=0.5 #edge of markers
 xlim=[10,-10] #x axis range
 ylim=[-10,10]#y axis range
+circ_label=True
+
 snr_cut=0. #make an snr threshold
-#savefig='my_pretty_plot.pdf' #path / name to save the plot
+ticks_in_style=False #Katie's style of ticks with labels inside the figure
+#savefig='my_pretty_figure.pdf' #name / path to save the figure
+
 
 def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
             legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
-line_color=[0,0,0,1], size_dots_primary=30, size_dots_redundant=30,
+            size_dots_primary=30, size_dots_redundant=30,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
             yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True):
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
@@ -96,7 +99,6 @@ line_color=[0,0,0,1], size_dots_primary=30, size_dots_redundant=30,
     dataF['u'] = dataF['u']/1e9
     dataF['v'] = dataF['v']/1e9
     foo = dataF
-    plt.figure(figsize=figsize)
     
     #redundant baselines
     for base in sorted(list(foo.baseline.unique())):
