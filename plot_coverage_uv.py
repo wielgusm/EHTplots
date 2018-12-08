@@ -40,7 +40,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         return z
     SMT2Z = {'ALMA': 'A', 'APEX': 'X', 'JCMT': 'J', 'LMT':'L', 'SMR':'R', 'SMA':'S', 'SMT':'Z', 'PV':'P','SPT':'Y'}
     Z2SMT = {v: k for k, v in SMT2Z.items()}
-    AZ2SMT={'AA':'ALMA','AP':'APEX','AZ':'SMT','LM':'LMT','SP':'SPT','SM':'SMA','JC':'JCMT','SR':'SMAR','PV':'IRAM30'}
+    AZ2SMT={'AA':'ALMA','AP':'APEX','AZ':'SMT','LM':'LMT','SP':'SPT','SM':'SMA','JC':'JCMT','SR':'SMAR','PV':'PV'}
     palette_dict = {'ALMA-APEX':rgb(0,0,0),
                 'JCMT-SMA':rgb(0,0,0),
                 'SMT-LMT':rgb(51, 51, 255),
