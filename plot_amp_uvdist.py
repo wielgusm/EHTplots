@@ -29,12 +29,13 @@ debias=True #plot debiased amplitudes
 snr_cut=0. #make an snr threshold
 bars_on=1. #multiplier for errorbar length, 0 for no errorbars
 #savefig='my_pretty_plot.pdf' #path / name to save the plot
+ticks_in_style=False #style with labels inside
 
 def plot_amp_uvdist(pathf,fontsize=14,ticks_fontsize=10, line_width=0.5,
             capsize=2,legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
 line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
             mark_edge_width=0.5, xlim=[-0.4,9], ylim=[0.005,2],bars_on=1.,
-            yscale='log',ticks_in_style=False,figsize=(6,4),debias=True,snr_cut=0,savefig='',fontweight='normal'):
+            yscale='log',ticks_in_style=ticks_in_style,figsize=(6,4),debias=True,snr_cut=0,savefig='',fontweight='normal'):
     
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
     def merge_two_dicts(x, y):
@@ -42,6 +43,8 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         z.update(y)    # modifies z with y's keys and values & returns None
         return z
     AZ2SMT={'AA':'ALMA','AP':'APEX','AZ':'SMT','LM':'LMT','SP':'SPT','SM':'SMA','JC':'JCMT','SR':'SMAR','PV':'IRAM30'}
+    SMT2Z = {'ALMA': 'A', 'APEX': 'X', 'JCMT': 'J', 'LMT':'L', 'SMR':'R', 'SMA':'S', 'SMT':'Z', 'PV':'P','SPT':'Y'}
+    Z2SMT = {v: k for k, v in SMT2Z.items()}
     palette_dict = {'ALMA-APEX':rgb(0,0,0),
                     'JCMT-SMA':rgb(120,120,120),
                     'SMT-LMT':rgb(51, 51, 255),
@@ -102,8 +105,11 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     plt.rcParams["font.weight"] = "normal"
     plt.rcParams["axes.labelweight"] = "normal"
     #primary baselines
-    for base in sorted(list(foo.baseline.unique())):      
-        basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
+    for base in sorted(list(foo.baseline.unique())):
+        if len(base)==2:
+            basefull = Z2SMT[base[0]]+'-'+Z2SMT[base[1]]
+        else:    
+            basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
         if ('JCMT' not in basefull) and (('APEX' not in basefull) or ('ALMA' in basefull)):
             plt.errorbar(foo[foo.baseline==base].uvdist/1e3,foo[foo.baseline==base].ampdb,
                          bars_on*foo[foo.baseline==base].sigma,fmt='o',ms=size_dots_primary,
@@ -111,7 +117,10 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
                         capsize=capsize,mec=mark_edge_color,ecolor=line_color,mew=mark_edge_width)
     #redundant baselines       
     for base in sorted(list(foo.baseline.unique())):      
-        basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
+        if len(base)==2:
+            basefull = Z2SMT[base[0]]+'-'+Z2SMT[base[1]]
+        else:    
+            basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
         if ('JCMT' in basefull) or (('APEX' in basefull) and ('ALMA' not in basefull)) :
             plt.errorbar(foo[foo.baseline==base].uvdist/1e3,foo[foo.baseline==base].ampdb,
                          bars_on*foo[foo.baseline==base].sigma,fmt='d',ms=size_dots_redundant,
