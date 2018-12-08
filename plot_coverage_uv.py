@@ -106,9 +106,10 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
             basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
         #print(basefull,current_palette[basefull])
         if ('JCMT' in basefull) or (('APEX' in basefull) and ('ALMA' not in basefull)) :
+            colorLoc=current_palette[basefull]
             plt.scatter(foo[foo.baseline==base].u,foo[foo.baseline==base].v,
                         s=size_dots_redundant,
-                        c=current_palette[basefull],label=basefull)
+                        c=colorLoc,label=basefull)
     
     #primary baselines
     for base in sorted(list(foo.baseline.unique())):
@@ -117,9 +118,10 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         else:    
             basefull = AZ2SMT[base[:2]]+'-'+AZ2SMT[base[3:]]
         if ('JCMT' not in basefull) and (('APEX' not in basefull) or ('ALMA' in basefull)) :
+            colorLoc=current_palette[basefull]
             plt.scatter(foo[foo.baseline==base].u,foo[foo.baseline==base].v,
                         s=size_dots_primary,
-                        c=current_palette[basefull],label=basefull)
+                        c=colorLoc,label=basefull)
 
     
     t= np.linspace(0,2*np.pi,256)
