@@ -90,7 +90,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     df2 = df.copy()
     df2['u'] = -df['u']
     df2['v'] = -df['v']
-    dataF = pd.concat([foo,foo2],ignore_index=True)
+    dataF = pd.concat([df,df2],ignore_index=True)
     dataF['u'] = dataF['u']/1e9
     dataF['v'] = dataF['v']/1e9
     foo = dataF
