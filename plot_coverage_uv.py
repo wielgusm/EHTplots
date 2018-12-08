@@ -143,8 +143,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
 
     plt.xlabel('u (G$\lambda$)',fontname=fontname,fontsize=fontsize)
     plt.ylabel('v (G$\lambda$)',fontname=fontname,fontsize=fontsize)
-
-    plt.tick_params(axis='both', which='both', labelsize=fontsize,top=True,right=True)
+    plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True)
     plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     plt.minorticks_on()
