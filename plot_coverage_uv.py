@@ -32,7 +32,7 @@ def plot_coverage_uv(pathf,fontsize=14,ticks_fontsize=10, line_width=0.5,
             legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
 line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
-            yscale='log',ticks_in_style=False,figsize=(10.5,7.5),snr_cut=0,savefig='',fontweight='normal'):
+            yscale='log',ticks_in_style=False,figsize=(10.5,7.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True):
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
     def merge_two_dicts(x, y):
         z = x.copy()   # start with x's keys and values
@@ -135,8 +135,9 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     plt.axis(xlim+ylim)
     r1 = 8.6; a1 = np.pi*(0.26)
     r2=4.4; a2=np.pi*0.26
-    plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
-    plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
+    if circ_label:
+        plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
+        plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
     plt.gcf().subplots_adjust(left=0.3,top=0.95)
     labelfontsize=15
     arcfotsize=13
@@ -148,7 +149,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
     plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     plt.minorticks_on()
     if legend:
-        plt.legend(bbox_to_anchor=(1.0, 1.0))
+        plt.legend(bbox_to_anchor=(1.0, 1.0),loc=2)
     if savefig!='':
         plt.savefig(savefig,bbox_inches='tight') 
     plt.show()
