@@ -141,7 +141,7 @@ line_color=[0,0,0,1], size_dots_primary=6*1.3, size_dots_redundant=6*1.,
         plt.tick_params(axis="y",direction="in", pad=-28)
         plt.tick_params(axis="x",direction="in", pad=-16)
     if legend:
-        plt.legend(bbox_to_anchor=(1.0, 1.0))
+        plt.legend(bbox_to_anchor=(1.0, 1.0),loc=2)
     if savefig!='':
         plt.savefig(savefig,bbox_inches='tight') 
     plt.show()
