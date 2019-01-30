@@ -165,8 +165,10 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     r1 = 8.6; a1 = np.pi*(0.26)
     r2=4.4; a2=np.pi*0.26
     if circ_label:
-        plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
-        plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
+        #plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
+        #plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
+        plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=small_labelsize,rotation=42)
+        plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=small_labelsize,rotation=42)
     plt.gcf().subplots_adjust(left=0.3,top=0.95)
     labelfontsize=15
     arcfotsize=13
@@ -174,8 +176,11 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     plt.xlabel('u (G$\lambda$)',fontname=fontname,fontsize=fontsize)
     plt.ylabel('v (G$\lambda$)',fontname=fontname,fontsize=fontsize)
     plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True)
-    plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
-    plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
+    #plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
+    #plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
+    plt.xticks(fontsize=ticks_fontsize,fontweight=fontweight)
+    plt.yticks(fontsize=ticks_fontsize,fontweight=fontweight)
+
     plt.minorticks_on()
     
     if ticks_in_style:
