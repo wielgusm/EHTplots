@@ -15,10 +15,6 @@ from matplotlib import rcParams
 figsize=(8,5.5) #size of the figure
 #fontsize=15
 #ticks_fontsize=14
-text.usetex : True
-font.family : sans-serif
-font.sans-serif : Latin Modern Roman
-
 rcParams['text.usetex']=True
 rcParams['font.family']='sans-serif'
 rcParams['font.sans-serif']='Latin Modern Roman'
