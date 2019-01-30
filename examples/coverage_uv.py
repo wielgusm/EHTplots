@@ -32,6 +32,7 @@ mark_edge_width=0.5 #edge of markers
 xlim=[10,-10] #x axis range
 ylim=[-10,10]#y axis range
 circ_label=True
+grid_alpha=0.0
 
 snr_cut=0. #make an snr threshold
 ticks_in_style=False #Katie's style of ticks with labels inside the figure
@@ -42,4 +43,4 @@ plot_coverage_uv(pathf,fontsize=fontsize,ticks_fontsize=ticks_fontsize, line_wid
             legend=legend,fontname=fontname,mark_edge_color=mark_edge_color,
             size_dots_primary=size_dots_primary, size_dots_redundant=size_dots_redundant,
             mark_edge_width=0.5, xlim=xlim, ylim=ylim,circ_label=circ_label,
-            ticks_in_style=ticks_in_style,figsize=figsize,snr_cut=snr_cut,savefig='')
+            ticks_in_style=ticks_in_style,figsize=figsize,snr_cut=snr_cut,grid_alpha=grid_alpha,savefig='')
