@@ -17,7 +17,8 @@ figsize=(8,5.5) #size of the figure
 #ticks_fontsize=14
 rcParams['text.usetex']=True
 rcParams['font.family']='sans-serif'
-rcParams['font.sans-serif']='Latin Modern Roman'
+fontname='Latin Modern Roman'
+rcParams['font.sans-serif']=fontname
 # axes and tickmarks
 rcParams['axes.labelsize']=15
 #rcParams['axes.labelweight']=600
@@ -40,8 +41,8 @@ rcParams['lines.markeredgewidth']=0.5
 rcParams['lines.markersize']=5
 # points and lines
 legend=False
-fontname='Latin Modern Roman'
-fontname2='Helvetica'
+#
+#fontname2='Helvetica'
 line_width=0.5
 mark_edge_color=[0,0,0,0.5] #color of the marker edge, last digit is transparency alpha
 size_dots_primary=50 #size of markers for primary baselines  
@@ -57,7 +58,7 @@ grid_alpha=0.0
 small_labelsize=14
 
 def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
-            legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
+            legend=False,label=True,mark_edge_color=[0,0,0,0.5],
             size_dots_primary=30, size_dots_redundant=30,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
             yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True,
@@ -173,8 +174,11 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     labelfontsize=15
     arcfotsize=13
 
-    plt.xlabel('u (G$\lambda$)',fontname=fontname,fontsize=fontsize)
-    plt.ylabel('v (G$\lambda$)',fontname=fontname,fontsize=fontsize)
+    #plt.xlabel('u (G$\lambda$)',fontname=fontname,fontsize=fontsize)
+    #plt.ylabel('v (G$\lambda$)',fontname=fontname,fontsize=fontsize)
+    plt.xlabel('u (G$\lambda$)',fontsize=fontsize)
+    plt.ylabel('v (G$\lambda$)',fontsize=fontsize)
+
     plt.tick_params(axis='both', which='both',direction="in", labelsize=fontsize,top=True,right=True)
     #plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     #plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
