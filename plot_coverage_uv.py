@@ -39,11 +39,8 @@ rcParams['lines.linewidth']=2.0
 rcParams['lines.markeredgewidth']=0.5
 rcParams['lines.markersize']=5
 # points and lines
-lines.linewidth : 2.0
-lines.markeredgewidth : 0.5
-lines.markersize : 5
 legend=False
-fontname='Latin Modern Roman'
+#fontname='Latin Modern Roman'
 fontname2='Helvetica'
 line_width=0.5
 mark_edge_color=[0,0,0,0.5] #color of the marker edge, last digit is transparency alpha
