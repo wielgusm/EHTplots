@@ -40,7 +40,7 @@ rcParams['lines.markeredgewidth']=0.5
 rcParams['lines.markersize']=5
 # points and lines
 legend=False
-#fontname='Latin Modern Roman'
+fontname='Latin Modern Roman'
 fontname2='Helvetica'
 line_width=0.5
 mark_edge_color=[0,0,0,0.5] #color of the marker edge, last digit is transparency alpha
@@ -54,13 +54,14 @@ snr_cut=0. #make an snr threshold
 ticks_in_style=False #Katie's style of ticks with labels inside the figure
 #savefig='my_pretty_figure.pdf' #name / path to save the figure
 grid_alpha=0.0
+small_labelsize=14
 
 def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
             legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
             size_dots_primary=30, size_dots_redundant=30,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
             yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True,
-            grid_alpha=grid_alpha):
+            grid_alpha=grid_alpha,small_labelsize=small_labelsize):
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
     def merge_two_dicts(x, y):
         z = x.copy()   # start with x's keys and values
@@ -117,7 +118,7 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     plt.rcParams["font.weight"] = "normal"
     plt.rcParams["axes.labelweight"] = "normal"
     plt.grid(alpha=grid_alpha)
-    
+
     df2 = df.copy()
     df2['u'] = -df['u']
     df2['v'] = -df['v']
@@ -164,8 +165,8 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     r1 = 8.6; a1 = np.pi*(0.26)
     r2=4.4; a2=np.pi*0.26
     if circ_label:
-        plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
-        plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=12,rotation=42,fontname=fontname2)
+        plt.text(r1*np.cos(a1),r1*np.sin(a1), '25 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
+        plt.text(r2*np.cos(a2),r2*np.sin(a2), '50 $\mu$as', fontsize=small_labelsize,rotation=42,fontname=fontname2)
     plt.gcf().subplots_adjust(left=0.3,top=0.95)
     labelfontsize=15
     arcfotsize=13
