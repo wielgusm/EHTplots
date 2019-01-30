@@ -7,13 +7,45 @@ import pandas as pd
 #import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.transforms as mt
+from matplotlib import rcParams
 
 ###################################
 #SOME ASSUMPTIONS
 ###################################
 figsize=(8,5.5) #size of the figure
-fontsize=15
-ticks_fontsize=14
+#fontsize=15
+#ticks_fontsize=14
+text.usetex : True
+font.family : sans-serif
+font.sans-serif : Latin Modern Roman
+
+rcParams['text.usetex']=True
+rcParams['font.family']='sans-serif'
+rcParams['font.sans-serif']='Latin Modern Roman'
+# axes and tickmarks
+rcParams['axes.labelsize']=15
+#rcParams['axes.labelweight']=600
+rcParams['axes.linewidth']=1.5
+rcParams['xtick.labelsize']=14
+rcParams['xtick.top']=True
+rcParams['xtick.direction']='in'
+rcParams['xtick.major.width']=1.2
+rcParams['xtick.minor.width']=1.2
+rcParams['xtick.minor.visible']=True
+rcParams['ytick.labelsize']=14
+rcParams['ytick.right']=True
+rcParams['ytick.direction']='in'
+rcParams['ytick.major.width']=1.2
+rcParams['ytick.minor.width']=1.2
+rcParams['ytick.minor.visible']=True
+# points and lines
+rcParams['lines.linewidth']=2.0
+rcParams['lines.markeredgewidth']=0.5
+rcParams['lines.markersize']=5
+# points and lines
+lines.linewidth : 2.0
+lines.markeredgewidth : 0.5
+lines.markersize : 5
 legend=False
 fontname='Latin Modern Roman'
 fontname2='Helvetica'
@@ -25,17 +57,17 @@ mark_edge_width=0.5 #edge of markers
 xlim=[10,-10] #x axis range
 ylim=[-10,10]#y axis range
 circ_label=True
-
 snr_cut=0. #make an snr threshold
 ticks_in_style=False #Katie's style of ticks with labels inside the figure
 #savefig='my_pretty_figure.pdf' #name / path to save the figure
-
+grid_alpha=0.0
 
 def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
             legend=False,label=True,fontname='Latin Modern Roman',mark_edge_color=[0,0,0,0.5],
             size_dots_primary=30, size_dots_redundant=30,
             mark_edge_width=0.5, xlim=[10,-10], ylim=[-10,10],
-            yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True):
+            yscale='log',ticks_in_style=False,figsize=(8,5.5),snr_cut=0,savefig='',fontweight='normal',circ_label=True,
+            grid_alpha=grid_alpha):
     rgb = lambda x,y,z: (x/255.,y/255.,z/255.) 
     def merge_two_dicts(x, y):
         z = x.copy()   # start with x's keys and values
