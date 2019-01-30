@@ -116,7 +116,8 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     plt.figure(figsize=figsize)
     plt.rcParams["font.weight"] = "normal"
     plt.rcParams["axes.labelweight"] = "normal"
-
+    plt.grid(alpha=grid_alpha)
+    
     df2 = df.copy()
     df2['u'] = -df['u']
     df2['v'] = -df['v']
@@ -175,7 +176,7 @@ def plot_coverage_uv(pathf,fontsize=15,ticks_fontsize=14, line_width=0.5,
     plt.xticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     plt.yticks(fontname=fontname,fontsize=ticks_fontsize,fontweight=fontweight)
     plt.minorticks_on()
-    plt.grid(alpha=grid_alpha)
+    
     if ticks_in_style:
         plt.tick_params(axis="y",direction="in", pad=-28)
         plt.tick_params(axis="x",direction="in", pad=-16)
