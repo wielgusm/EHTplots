@@ -48,14 +48,14 @@ palette_dict = {'ALMA-APEX':rgb(0,0,0),
             'ALMA-JCMT':rgb(204, 153, 255),
             'APEX-SMA':rgb(204, 153, 255),
             'APEX-JCMT':rgb(204, 153, 255),#:rgb(133, 163, 41),
-            'LMT-SPT':'yellow',
+            'LMT-SPT':rgb(193, 166, 44),#'yellow',
             'LMT-PV':rgb(153, 102, 51),
-            'SMA-SPT':'darkred',
-            'JCMT-SPT':'darkred',
-            'SMT-SPT':'salmon', 
-            'PV-SPT':'saddlebrown',
-            'PV-SMA':'tan',
-            'JCMT-PV':'tan',
+            'SMA-SPT':rgb(139,0,0),#'darkred',
+            'JCMT-SPT':rgb(139,0,0),#'darkred',
+            'SMT-SPT':rgb(250,128,114),#'salmon', 
+            'PV-SPT':rgb(139, 69, 19), #'saddlebrown'
+            'PV-SMA':‎rgb(210, 180, 140),#tan
+            'JCMT-PV':‎rgb(210, 180, 140),
             'SMT-PV':rgb(179, 179, 0)}
 palette_dict_inv = {k.split('-')[1]+'-'+k.split('-')[0] : v for k, v in palette_dict.items()}
 baselines_palette = merge_two_dicts(palette_dict, palette_dict_inv)
