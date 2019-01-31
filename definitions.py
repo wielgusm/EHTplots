@@ -54,7 +54,7 @@ palette_dict = {'ALMA-APEX':rgb(0,0,0),
             'JCMT-SPT':rgb(139,0,0),#'darkred',
             'SMT-SPT':rgb(250,128,114),#'salmon', 
             'PV-SPT':rgb(139, 69, 19), #'saddlebrown'
-            'PV-SMA':‎rgb(210, 180, 140),#'tan'
+            'PV-SMA':‎'tan',
             'JCMT-PV':‎rgb(210, 180, 140),
             'SMT-PV':rgb(179, 179, 0)}
 palette_dict_inv = {k.split('-')[1]+'-'+k.split('-')[0] : v for k, v in palette_dict.items()}
