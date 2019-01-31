@@ -12,9 +12,11 @@ from matplotlib import rcParams
 rcParams['text.usetex']=True
 rcParams['font.family']='serif'
 rcParams['ytick.minor.visible']=True
+rcParams['xtick.minor.visible']=True
 rcParams['ytick.right']=True
 rcParams['xtick.top']=True
 rcParams['xtick.direction']='in'
+rcParams['ytick.direction']='in'
 rcParams['xtick.major.width']=1.2
 rcParams['xtick.minor.width']=1.2
 
