@@ -8,6 +8,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.transforms as mt
 from matplotlib import rcParams
+
+rcParams['text.usetex']=True
+rcParams['font.family']='serif'
+rcParams['ytick.minor.visible']=True
+rcParams['ytick.right']=True
+rcParams['xtick.top']=True
+rcParams['xtick.direction']='in'
+rcParams['xtick.major.width']=1.2
+rcParams['xtick.minor.width']=1.2
+
+
 def merge_two_dicts(x, y):
         z = x.copy()   # start with x's keys and values
         z.update(y)    # modifies z with y's keys and values & returns None
@@ -46,3 +57,4 @@ palette_dict = {'ALMA-APEX':rgb(0,0,0),
             'SMT-PV':rgb(179, 179, 0)}
 palette_dict_inv = {k.split('-')[1]+'-'+k.split('-')[0] : v for k, v in palette_dict.items()}
 baselines_palette = merge_two_dicts(palette_dict, palette_dict_inv)
+
